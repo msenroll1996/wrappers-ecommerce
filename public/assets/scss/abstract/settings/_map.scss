@@ -1,0 +1,3 @@
+@function get-map($mname, $kname) {
+    @return map-get($mname, $kname);
+}

@@ -1,0 +1,102 @@
+// CSS Variable 
+@mixin css-var($property, $root, $val, $imp:null) {
+    @if($imp == true) {
+        #{$property}: get-map($root, #{$val}) !important;
+        #{$property}: var(--#{$val}) !important;
+    }
+    @else {
+        #{$property}: get-map($root, #{$val});
+        #{$property}: var(--#{$val});
+    }
+}
+
+
+// display
+@mixin dis($dis) {
+    display: $dis;
+}
+
+// border-radius
+@mixin radius($val) {
+    border-radius: $val;
+}
+
+// border
+@mixin border($width, $style) {
+    border-width: $width;
+    border-style: $style;
+}
+
+// box-modal
+@mixin box-modal($type, $val) {
+    @if $type == 'margin' {
+        margin: $val;
+    }
+    @else {
+        padding: $val;
+    }
+}
+
+// Center Align
+@mixin mx-auto {
+    .mx-auto {
+        @include box-modal(margin, 0 auto);
+    }
+}
+
+// position
+@mixin pos($type, $t:null, $r:null, $b:null, $l:null, $z:null) {
+    position: $type;
+
+    @if $t != null {
+        top: $t;
+    }
+
+    @if $r != null {
+        right: $r;
+    }
+
+    @if $b != null {
+        bottom: $b;
+    }
+
+    @if $l != null {
+        left: $l;
+    }
+    
+    @if $z != null {
+        z-index: $z;
+    }
+}
+
+// utility
+@mixin utility() {
+    
+    /* text align, transform */
+    .text {
+        &-align {
+            &-left {
+                text-align: left;
+            }
+            &-right {
+                text-align: right;
+            }
+            &-center {
+                text-align: center;
+            }
+            &-justify {
+                text-align: justify;
+            }
+        }
+        &-decoration {
+            &-underline {
+                text-decoration: underline;
+            }
+            &-double {
+                text-decoration: double;
+            }
+        }
+    }
+}
+
+// @include utility;

@@ -1,0 +1,65 @@
+.site__blog-list--zig-jag {
+    .uk-card {
+        article {
+            padding: 1.5rem 4.5rem;
+        }
+        &:nth-child(even) {
+            .uk-grid > div {
+                order: 2;
+            }
+            figure {
+                order: 1;
+            }
+        }
+    }
+}
+
+.uk-card, .uk-panel {
+    .uk-overlay-primary {
+        background-color: rgba(#000, 0.5);
+    }
+}
+
+.site__best-seller {
+    .uk-slider-container {
+        padding-bottom: 20px;
+    }
+}
+
+.uk-card {
+    &-body {
+        padding: 0.8rem 1.5rem;
+
+        .uk-h5 {
+            margin: 0.5rem 0 1rem;
+        }
+    }
+
+    .uk-dotnav > * {
+        &.blue {
+            & > * {
+                @include css-var(background-color, $theme, info, true);
+            }
+        }
+        &.black {
+            & > * {
+                @include css-var(background-color, $theme, secondary, true);
+            }
+        }
+        &.orange {
+            & > * {
+                @include css-var(background-color, $theme, accent-orange, true);
+            }
+        }
+        &.uk-active {
+            & > * {
+                border: 3px solid;
+                @include css-var(border-color, $theme, primary, true);
+            }
+        }
+        & > * {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.uk-button {
+    padding: 0.9rem 2.5rem;
+
+    &-icon {
+        padding: 0.2rem 0.6rem;
+        border-radius: 5px;
+
+        &.uk-margin-small-bottom {
+            margin-bottom: 0.2rem !important;
+        }
+    }
+
+    &-small {
+        padding: 0.4rem 1.5rem;
+    }
+
+    &-primary {
+        @include css-var(background-color, $theme, primary);
+    }
+
+    &-secondary {
+        @include css-var(background-color, $theme, secondary);
+    }
+
+    &-accent {
+        @include css-var(background-color, $theme, accent);
+    }
+}

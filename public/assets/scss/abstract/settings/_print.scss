@@ -1,0 +1,8 @@
+@mixin write-css($property, $val, $imp:null) {
+    @if($imp == true) {
+        #{$property}: #{$val} !important;
+    }
+    @else {
+        #{$property}: #{$val};
+    }
+}
