@@ -370,4 +370,12 @@ iframe {
 .site__add-to-cart aside .button-group .uk-button + * {
   margin-top: 10px;
 }
+
+.gateway label {
+  display: block;
+}
+
+.gateway label + label {
+  margin-top: 10px;
+}
 /*# sourceMappingURL=style.css.map */

@@ -33,6 +33,10 @@ Route::get('/default_page',function(){
     return view('frontend.default_page');
 })->name('frontend.default');
 
+Route::get('/payment',function(){
+    return view('frontend.checkout.payment');
+})->name('frontend.payment');
+
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/login','App\Http\Controllers\Frontend\LoginController@get_login')->name('frontend.login.get_login');
     Route::post('/login','App\Http\Controllers\Frontend\LoginController@post_login')->name('frontend.login.post_login');

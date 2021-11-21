@@ -29,7 +29,7 @@
                             <div class="uk-flex-middle uk-flex-right uk-flex">
                                 <a href = "{{route('frontend.cart.index')}}"
                                     class="uk-button uk-button-transparent uk-padding-remove-vertical uk-border-pill uk-flex uk-flex-middle">
-                                    <span class="mr-2" uk-icon="cart"></span>
+                                    <span class="mr-2" uk-icon="cart" style="width: 20px;"></span>
                                     <span class="uk-display-inline-block">
                                         <span class="cart-text">Cart</span>
                                         @if(Session::has('cart'))
@@ -47,10 +47,10 @@
                                 @guest
                                 <div 
                                     class="uk-button uk-button-transparent uk-padding-remove-vertical uk-border-pill uk-flex uk-flex-middle">
-                                    <span class="mr-2" uk-icon="user"></span>
+                                    <span class="mr-2" uk-icon="user" style="width: 20px;"></span>
                                     <span class="uk-display-inline-block uk-text-left">
-                                        <a href="{{route('frontend.login.get_login')}}" class="cart-text uk-button uk-padding-remove-vertical uk-flex">Login</a>
-                                        <a href = "{{route('frontend.register.get_register')}}" class="cart-text uk-button uk-padding-remove-vertical uk-flex">Register</a>
+                                        <a href="{{route('frontend.login.get_login')}}" class="cart-text uk-text-secondary">Login</a><br>
+                                        <a href = "{{route('frontend.register.get_register')}}" class="cart-text  uk-text-secondary">Register</a>
                                     </span>
                                 </div>
                                 @endguest
@@ -64,9 +64,9 @@
                                     </span>
                                 </div>
                                 @endauth
-                                <button class="uk-toggle-button uk-hidden@m" type="button" uk-toggle="target: #offcanvas-nav">
-                                    <a class="uk-navbar-toggle" href="#">
-                                        <span uk-navbar-toggle-icon></span>
+                                <button class="uk-toggle-button uk-hidden@m" type="button" uk-toggle="target: #offcanvas-nav" style="margin-left: 20px; broder: none;">
+                                    <a class="" href="#">
+                                        <span uk-icon="menu" style="width: 20px; display: block;"></span>
                                     </a>
                                 </button>
                             </div>
@@ -198,7 +198,7 @@
                             <h4>Sign up for newsletter</h4>
                             <form action="">
                                 <div class="uk-grid-collapse" uk-grid>
-                                    <div class="uk-inline uk-width-expand@m">
+                                    <div class="uk-inline uk-width-expand">
                                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
                                         <input class="uk-input h-full" type="text" placeholder="Email Address">
                                     </div>

@@ -209,3 +209,10 @@ iframe {
         }
     }
 }
+
+.gateway label {
+    display: block;
+    & + label {
+        margin-top: 10px;
+    }
+}
