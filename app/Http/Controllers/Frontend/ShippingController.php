@@ -28,6 +28,7 @@ class ShippingController extends Controller
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
+        return redirect()->route('frontend.shipping.payment');
       
             $order = new Order();
             $order->user_id = auth()->id();
@@ -56,5 +57,8 @@ class ShippingController extends Controller
         // $user->shipping_phone = $request->phone;
     
         // $user->save();
+    }
+    public function payment(){
+        return view('frontend.checkout.payment');
     }
 }

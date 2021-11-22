@@ -55,6 +55,7 @@ Route::group([ 'middleware' => 'auth'], function()
     Route::get('/remove_wishlist/{product_id}','App\Http\Controllers\Frontend\WishlistController@remove')->name('frontend.wishlist.remove');
     Route::get('/shipping','App\Http\Controllers\Frontend\ShippingController@index')->name('frontend.shipping.index');
     Route::post('/post_shipping','App\Http\Controllers\Frontend\ShippingController@post_shipping')->name('frontend.shipping.post_shipping');
+    Route::get('payment','App\Http\Controllers\Frontend\ShippingController@payment')->name('frontend.shipping.payment');
 });
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function()
@@ -102,4 +103,5 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(
    
        //logout route
        Route::get('logout',[LoginController::class, 'logout'])->name('logout');
+       
 });

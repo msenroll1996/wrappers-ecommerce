@@ -50,17 +50,14 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                Rs. {{$product['item']->selling_price}}
+                                                Rs. {{$wishlist_product->selling_price}}
                                             </td>
                                             <td>
-                                                <button type="button" class="close-btn" onclick = "javascript:reduceByOne({{$product['item']['id']}})" route = "{{route('frontend.cart.reduceByOne')}}" id = "{{$product['item']['id']}}">
-                                                        <span uk-icon="chevron-down"></span>
-                                                </button>
-                                                <span id = "cartQty{{$product['item']['id']}}">{{  $product['qty']  }}</span>
-                                                <button type="button" class="close-btn" onclick = "javascript:addByOne({{$product['item']['id']}})" route = "{{route('frontend.cart.addByOne')}}" id = "add{{$product['item']['id']}}">
-                                                        <span uk-icon="chevron-up"></span>
-                                                </button>
+                                            <input id = "qtyValue{{$wishlist_product->id}}" class="uk-input h-full" type="number" value="1" min = "1">
                                             </td>
+                                            <td>
+                                                In stock
+                                            <td/>
                                             <td>
                                                 <a href="javascript:add_to_cart({{$wishlist_product->id}})" id = "{{$wishlist_product->id}}" route="{{route('frontend.cart.add_to_cart')}}"
                                                 class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom">

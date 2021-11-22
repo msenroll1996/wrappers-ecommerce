@@ -11,7 +11,7 @@
                     <div class="site__category-nav-list__link uk-position-relative">
                         <a href="#">
                             <img src="{{url( 'storage/'.$category->cover_image )}}"
-                                class="image-cover uk-border-circle" alt="mobile">
+                                class="image-cover uk-border-circle" alt="{{$category->name}}">
                         </a>
                     </div>
                     @endforeach
