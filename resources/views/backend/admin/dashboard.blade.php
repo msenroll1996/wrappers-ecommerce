@@ -46,8 +46,8 @@
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{route('get_member_lists')}}">List</a>
-                    <a class="dropdown-item" href="{{route('add_member_list')}}">Add</a>
+                    <a class="dropdown-item" href="">List</a>
+                    <a class="dropdown-item" href="">Add</a>
                     
                   </div>
                 </div>
@@ -72,8 +72,8 @@
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{route('get_news_and_updates')}}">List</a>
-                    <a class="dropdown-item" href="{{route('add_news_and_update')}}">Add</a>
+                    <a class="dropdown-item" href="">List</a>
+                    <a class="dropdown-item" href="">Add</a>
                     
                   </div>
                 </div>

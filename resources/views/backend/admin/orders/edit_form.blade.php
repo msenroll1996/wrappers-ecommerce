@@ -71,18 +71,21 @@
                       </div>
                     </div>
                     <div class="col-md-6 pr-1">
-                    <div class="form-group">
-                      <label>Slug</label>
-                        <input type="text" name = "slug" value = "{{$product->slug}}" class="form-control" placeholder="Enter Product slug" required>
-                        
+                      <div class="form-group">
+                      <label>Select Sub Category</label>
+                      <select name="sub_category_id" id="sub_category" class="form-control" required>
+                        @foreach($sub_categories as $sub_categorie)
+                        <option value="{{$sub_categorie->id}}" {{$product->sub_category->id == $sub_categorie->id ? 'selected' : ''}}> {{$sub_categorie->name}} </option>
+                        @endforeach
+                      </select> 
                       </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6 pr-1">
-                    <div class="form-group">
-                      <label>Price</label>
-                        <input type="text" name = "selling_price" value = "{{$product->selling_price}}" class="form-control" placeholder="Enter Product Price" required>
+                      <div class="form-group">
+                      <label>Slug</label>
+                        <input type="text" name = "slug" value = "{{$product->slug}}" class="form-control" placeholder="Enter Product slug" required>
                         
                       </div>
                     </div>
@@ -93,7 +96,21 @@
                       </div>
                     </div>
                   </div>
-                  
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                      <label>Price</label>
+                        <input type="text" name = "selling_price" value = "{{$product->selling_price}}" class="form-control" placeholder="Enter Product Price" required>
+                        
+                      </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                      <label>Color</label>
+                        <input type="text" name = "color" value = "{{$product->color}}" class="form-control" placeholder="Enter Product color">
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
                     <div class="col-md-12 pr-1">
                       <div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Storage;
 
 class CategoryController extends Controller
 {
@@ -27,13 +28,26 @@ class CategoryController extends Controller
     }
 
     public function add(){
-        return view('backend.admin.categories.add_form',['title' => $this->title,'route' => $this->route]);
+        $categories = Category::all();
+        return view('backend.admin.categories.add_form',['title' => $this->title,'route' => $this->route,'categories' => $categories]);
     }
     public function store(Request $request){
+        $this->validate($request, [
+            
+            'cover_image' => 'mimes:jpeg,png,jpg',
+          
+           
+        ]);
+        
+        if($request->hasFile('cover_image')){
+            $image_path = Storage::disk('public')->putFile('images/categories/'.$request->name, $request->file('cover_image'));
+        }
         $category =  Category::create([
+            'parent_id' => $request['parent_id'],
             'name' => $request['name'],
             'status' => $request['status'],
             'slug' => $request['slug'],
+            'cover_image' => $image_path ?? null,
             
         ]);
         
@@ -47,11 +61,27 @@ class CategoryController extends Controller
     }
     public function edit($id){
         $category = Category::findorfail($id);
-        return view('backend.admin.categories.edit_form',['title' => $this->title,'route' => $this->route,'category' => $category]);
+        $categories = Category::all();
+        return view('backend.admin.categories.edit_form',['title' => $this->title,'route' => $this->route,'category' => $category,'categories' => $categories]);
     }
     public function update(Request $request,$id){
+        $this->validate($request, [
+            
+            'cover_image' => 'mimes:jpeg,png,jpg',
+           
+           
+        ]);
         $category = Category::findorfail($id);
-        
+        if($request->hasFile('cover_image')){
+            
+            if($category->cover_image != null){
+                unlink(storage_path('app/public/'.$category->cover_image));
+            }
+            $path_first = Storage::disk('public')->putFile('images/categories/'.$request->name, $request->file('cover_image'));
+            $category->cover_image = $path_first;
+           
+        }
+        $category->parent_id = $request->parent_id;
         $category->name = $request->name;
         $category->status = $request->status;
         $category->slug = $request->slug;
@@ -63,6 +93,9 @@ class CategoryController extends Controller
 
     public function destroy(Request $request,$id){
         $category = Category::find($id);
+        if($category->cover_image != null){
+            unlink(storage_path('app/public/'.$category->cover_image));
+        }
         $category->delete();
         $request->session()->flash('alert-success', 'Category was successful deleted!');
         return redirect('/admin/category');

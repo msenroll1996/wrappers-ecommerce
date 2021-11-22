@@ -7,42 +7,14 @@
                     <h1>I'm looking for... </h1>
                 </div>
                 <div class="uk-child-width-1-3 uk-child-width-1-6@l" uk-grid>
+                    @foreach($categories as $category)
                     <div class="site__category-nav-list__link uk-position-relative">
                         <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
+                            <img src="{{url( 'storage/'.$category->cover_image )}}"
                                 class="image-cover uk-border-circle" alt="mobile">
                         </a>
                     </div>
-                    <div class="site__category-nav-list__link uk-position-relative">
-                        <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg"
-                                class="image-cover uk-border-circle" alt="laptop">
-                        </a>
-                    </div>
-                    <div class="site__category-nav-list__link uk-position-relative">
-                        <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg"
-                                class="image-cover uk-border-circle" alt="ipod">
-                        </a>
-                    </div>
-                    <div class="site__category-nav-list__link uk-position-relative">
-                        <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2014/10/07/09/17/earphones-477446_960_720.jpg"
-                                class="image-cover uk-border-circle" alt="mobile">
-                        </a>
-                    </div>
-                    <div class="site__category-nav-list__link uk-position-relative">
-                        <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2017/06/29/10/28/games-2453777_960_720.jpg"
-                                class="image-cover uk-border-circle" alt="mobile">
-                        </a>
-                    </div>
-                    <div class="site__category-nav-list__link uk-position-relative">
-                        <a href="#">
-                            <img src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                class="image-cover uk-border-circle" alt="mobile">
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

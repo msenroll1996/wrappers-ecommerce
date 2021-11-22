@@ -92,8 +92,8 @@ class ProductController extends Controller
     public function edit($id){
         $product = Product::findorfail($id);
         $categories = Category::all();
-        $sub_categories = SubCategory::where('category_id',$product->category_id)->get();
-        return view('backend.admin.products.edit_form',['title' => $this->title,'route' => $this->route,'product' => $product,'categories' => $categories,'sub_categories' => $sub_categories]);
+        // $sub_categories = SubCategory::where('category_id',$product->category_id)->get();
+        return view('backend.admin.products.edit_form',['title' => $this->title,'route' => $this->route,'product' => $product,'categories' => $categories]);
     }
 
     public function update(Request $request,$id){
