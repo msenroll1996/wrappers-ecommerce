@@ -61,6 +61,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="uk-margin">
+                                                    <label class="uk-form-label" for="email">
+                                                        Phone
+                                                    </label>
+                                                    <div class="uk-form-controls">
+                                                        <div class="uk-inline uk-width-1-1">
+                                                            <a class="uk-form-icon uk-form-icon-flip" uk-tooltip="title: Must be a valid email.<br>One account per email.<br>This field is required.; pos: bottom-right"><i class="fas fa-info-circle"></i></a>
+                                                            <input class="uk-input" id="phone" name="phone" type="text" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="uk-margin">
                                                     <label class="uk-form-label" for="password">
                                                         Password
                                                     </label>

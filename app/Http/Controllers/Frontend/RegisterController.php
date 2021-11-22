@@ -20,7 +20,8 @@ class RegisterController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'phone' => 'required',
         ]);
         if(!$validation){
             $message = "Email already registered!";
@@ -38,6 +39,7 @@ class RegisterController extends Controller
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'email' => $request['email'],
+            'phone' => $request['phone'],
             'is_admin' => false,
             'password' => bcrypt($request['password']),
         ]);

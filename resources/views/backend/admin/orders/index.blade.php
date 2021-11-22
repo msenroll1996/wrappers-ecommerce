@@ -5,8 +5,8 @@
 @section('search')
 <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="{{ route("backend.product.add")}}">
-                  Add Product
+                <a class="nav-link" href="{{ route("backend.order.add")}}">
+                  Add Order
                 </a>
               </li>
 </ul>
@@ -30,7 +30,7 @@
               <div class="card-header">
                 <h4 class="card-title"> {{$title}}</h4>
                 <div  class="col-md-2" style = "margin-left:85%">
-                      <button class="btn btn-primary" onclick="window.location='{{ route("backend.product.add")}}'">Add new</button>
+                      <button class="btn btn-primary" onclick="window.location='{{ route("backend.order.add")}}'">Add new</button>
                 </div>
          
   
@@ -40,42 +40,59 @@
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                        Name
+                        Order No.
                       </th>
                       <th>
-                        Code
+                        Customer
                       </th>
                       <th>
-                        Price
+                        Total Items
                       </th>
                       <th>
-                        Category
+                        Total Price
+                      </th>
+                      <th>
+                        Payment Method
+                      </th>
+                      <th>
+                        Paid
+                      </th>
+                      <th>
+                        Status
                       </th>
                       <th class="text-right">
                         Action
                       </th>
                     </thead>
                     <tbody>
-                      @foreach($products as $product)
+                      @foreach($orders as $order)
                       <tr>
                           <td>
-                            {{$product->name}}
+                            {{$order->order_no}}
                           </td>
                           <td>
-                          {{$product->code}}
+                          {{$order->user->first_name.' '.$order->user->last_name }}
                           </td>
                           <td>
-                          {{$product->selling_price}}
+                          {{$order->total_quantity}}
                           </td>
                           <td>
-                          {{$product->category->name}}
+                          {{$order->total_price}}
                           </td>
-                        
+                          <td>
+                          {{$order->payment_method}}
+                          </td>
+                          <td>
+                          {{$order->is_paid ? 'Paid' : 'Not Paid'}}
+                          </td>
+                          <td>
+                          {{$order->status}}
+                          </td>
                           <!-- <td>
-                          @if($product->status == 1){{'Active'}}@else{{'In-active'}}@endif
+                          @if($order->status == 1){{'Active'}}@else{{'In-active'}}@endif
                           </td> -->
                            <td class="text-right">
-                            <a  href="{{route('backend.product.edit',['id' => $product->id])}}"><i data-toggle="tooltip" data-placement="top" title="Edit" class="far fa-edit"></i></a>&nbsp;&nbsp;<a onclick="return confirm('Are you sure to delete this item?')" href = "{{route('backend.product.destroy',['id' => $product->id])}}"><i data-toggle="tooltip" data-placement="top" title="Delete" class="far fa-trash-alt"></i></a>
+                            <a  href="{{route('backend.order.edit',['id' => $order->id])}}"><i data-toggle="tooltip" data-placement="top" title="Edit" class="far fa-edit"></i></a>&nbsp;&nbsp;<a onclick="return confirm('Are you sure to delete this item?')" href = "{{route('backend.order.destroy',['id' => $order->id])}}"><i data-toggle="tooltip" data-placement="top" title="Delete" class="far fa-trash-alt"></i></a>
                           </td>
                         </tr>
                       @endforeach

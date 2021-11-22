@@ -77,49 +77,14 @@
               <p>Products</p>
             </a>
           </li>
+          <li class= {{$title == 'Orders' ? 'active' : ''}}>
+            <a href="{{route('backend.orders.index')}}">
+              <i class="now-ui-icons education_atom"></i>
+              <p>Orders</p>
+            </a>
+          </li>
           
-          <!-- <li class= {{$title == 'Acts and Regulations' ? 'active' : ''}}>
-            <a href="{{route('get_acts_and_regulations')}}">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Acts and regulations</p>
-            </a>
-          </li>
-          <li class= {{$title == 'Member List' ? 'active' : ''}}>
-            <a href="{{route('get_member_lists')}}">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>Member List</p>
-            </a>
-          </li>
-          <li class = {{$title == 'News and Updates' ? 'active' : ''}}>
-            <a href="{{route('get_news_and_updates')}}">
-            <i class="far fa-newspaper"></i>
-              <p>News and Updates</p>
-            </a>
-          </li>
-          <li class = {{$title == 'Gallery' ? 'active' : ''}}>
-            <a href="{{route('get_gallery')}}">
-            <i class="fas fa-images"></i>
-              <p>Gallery</p>
-            </a>
-          </li>
-          <li class = {{$title == 'Central Bank Message' ? 'active' : ''}}>
-            <a href="{{route('get_message')}}">
-            <i class="fas fa-envelope"></i>
-              <p>Message from central bank</p>
-            </a>
-          </li>
-          <li class = {{$title == 'Partner' ? 'active' : ''}}>
-            <a href="{{route('get_partners')}}">
-            <i class="fas fa-envelope"></i>
-              <p>Partners</p>
-            </a>
-          </li>
-          <li class = {{$title == 'Change Password' ? 'active' : ''}}>
-            <a href="{{route('change_password')}}">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>Change Password</p>
-            </a>
-          </li> -->
+        
         </ul>
       </div>
     </div>

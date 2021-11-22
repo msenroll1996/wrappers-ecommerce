@@ -12,38 +12,39 @@
                         <div class="uk-width-1-1 uk-width-2-3@l">
                             <h2>Shipping Address</h2>
                             <hr class="uk-divider-icon">
-                            <form action="" class="shipping-form">
+                            <form action="{{route('frontend.shipping.post_shipping')}}" method = "post" class="shipping-form">
+                                @csrf
                                 <div class="uk-grid-small" uk-grid>
                                     <div class="uk-width-1-2@l">
                                         <div class="uk-margin">
                                             <label>First Name</label>
-                                            <input type="text" name = "first_name" class="uk-input" value = "{{auth()->user()->first_name}}" placeholder="First Name" required>
+                                            <input type="text" name = "shipping_first_name" class="uk-input" value = "{{auth()->user()->first_name}}" placeholder="First Name" required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-2@l">
                                         <div class="uk-margin">
                                         <label>Last Name</label>
-                                            <input type="text" name = "last_name" class="uk-input" value = "{{auth()->user()->last_name}}" placeholder="Last Name" required>
+                                            <input type="text" name = "shipping_last_name" class="uk-input" value = "{{auth()->user()->last_name}}" placeholder="Last Name" required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1">
                                         <div class="uk-margin">
                                         <label>Address</label>
-                                            <input type="text" name = "address" class="uk-input" placeholder="Address" required>
+                                            <input type="text" name = "shipping_address" class="uk-input" placeholder="Address" required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1">
                                         <div class="uk-margin">
                                         <label>Street</label>
-                                            <input type="text" name = "street" class="uk-input" placeholder="Appartment, suite, etc." required>
+                                            <input type="text" name = "shipping_street" class="uk-input" placeholder="Appartment, suite, etc." required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-2@l">
                                         <div class="uk-margin">
                                             <div class="uk-w-full" uk-form-custom="target: > * > span:first-child">
                                             <label>Country</label>
-                                                <select>
-                                                    <option value="1">Nepal</option>
+                                                <select name = "shipping_country">
+                                                    <option value="Nepal">Nepal</option>
                                                     
                                                 </select>
                                                 <button class="uk-button uk-button-default" type="button" tabindex="-1">
@@ -56,13 +57,13 @@
                                     <div class="uk-width-1-2@l">
                                         <div class="uk-margin">
                                         <label>Postal Code</label>
-                                            <input type="text" class="uk-input" placeholder="Postal Code">
+                                            <input type="text" name = "shipping_postal_code" class="uk-input" placeholder="Postal Code">
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1">
                                         <div class="uk-margin">
                                         <label>Phone</label>
-                                            <input type="text" name = "phone" class="uk-input" placeholder="Phone Number" required>
+                                            <input type="text" name = "shipping_phone" value = "{{auth()->user()->phone}}" class="uk-input" placeholder="Phone Number" required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1">

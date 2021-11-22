@@ -80,8 +80,11 @@
 
                         <ul class="uk-navbar-nav">
                             <li class="uk-active"><a href="{{route('frontend.index')}}">Home</a></li>
+                            @foreach(App\Models\Category::whereNull('parent_id')->get() as $category)
+                            <li class="uk-active"><a href="">{{$category->name}}</a></li>
+                            @endforeach
                             <li>
-                                <a href="#">Single Dropdown <span uk-icon="chevron-down"></span></a>
+                                <a href="#">Mobile Acc</a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                         <li class="uk-nav-header">Innerpages Link</li>
@@ -133,10 +136,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="#">Electornics</a></li>
-                            <li><a href="#">Kitcen</a></li>
-                            <li><a href="#">Furniture</a></li>
-                            <li><a href="#">Cameras</a></li>
+                            
                         </ul>
 
                     </div>
