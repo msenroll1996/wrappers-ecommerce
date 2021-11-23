@@ -20,4 +20,10 @@ jQuery(document).ready(function($) {
     $('#cancel_edit_view').click(function() {
         $('#edit_address').slideUp(1000);
     })
+    $('#different_billing').change(function() {
+        $('.shipping-info-form-section').slideDown(1000);
+    })
+    $('#same_billing').change(function() {
+        $('.shipping-info-form-section').slideUp(1000);
+    })
 })

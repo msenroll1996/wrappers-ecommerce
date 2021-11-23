@@ -8,7 +8,14 @@
                     <div class="site__add-to-cart__header">
                         <h1>Shipping</h1>
                     </div>
-                    <div uk-grid>
+                    <div class="breadcrumb">
+                        <ul class="breadcrumb-list">
+                            <li><a href="#">Cart</a></li>
+                            <li><span>Shipping</span></li>
+                            <li><span>Payment</span></li>
+                        </ul>
+                    </div>
+                    <div class='uk-grid-large' uk-grid>
                         <div class="uk-width-1-1 uk-width-2-3@l">
                             <h2>Shipping Address</h2>
                             <hr class="uk-divider-icon">
@@ -82,30 +89,39 @@
 
                         </div>
                         <div class="uk-width-1-1 uk-width-1-3@l">
-                            <aside>
-                                <h2>Order Summary</h2>
-                                <hr class="uk-divider-icon">
-                                <div class="uk-gird" uk-grid>
-                                    <h5>Sub Total:</h5>
-                                    <h4 class="uk-width-expand@l uk-text-right">Rs. 250.00</h4>
-                                </div>
-                                <hr class="uk-divider-icon">
-                                <div class="cupon-box">
-                                    <h5>Cupone Code:</h5>
-                                    <div class="uk-margin">
-                                        <input type="text" class="uk-input">
+                            <aside class="uk-width-2-3@l">
+                                <div class="uk-flex uk-flex-middle uk-flex-between">
+                                    <div class="uk-flex uk-flex-middle">
+                                        <figure class="uk-position-relative" style="margin-bottom: 0;">
+                                            <img src="https://cdn.pixabay.com/photo/2017/06/29/10/28/games-2453777_960_720.jpg" class="uk-border-rounded aside-produt-img" alt="">
+                                            <span class="uk-badge uk-position-absolute uk-position-top-right">1</span>
+                                        </figure>
+                                        <div style="margin-left: 10px;">Product Name</div>
                                     </div>
-                                    <span>Coupon code will be applied on the checkout page</span>
+                                    <div class="uk-text-secondary uk-text-bold">Rs. 1000.</div>
                                 </div>
-                                <hr class="uk-divider-icon">
-                                <div class="uk-gird" uk-grid>
-                                    <h5>Total:</h5>
-                                    <h4 class="uk-width-expand@l uk-text-right">Rs. 250.00</h4>
+                                <hr>
+                                <form action="" class="uk-margin uk-grid-small uk-flex-stretch" uk-grid>
+                                    <div class="uk-width-expand">
+                                        <input type="text" placeholder="Gift card discount code" class="uk-input">
+                                    </div>
+                                    <div>
+                                        <button class="uk-button uk-button-secondary uk-button-small">Apply</button>
+                                    </div>
+                                </form>
+                                <hr>
+                                <div class="uk-flex uk-flex-middle uk-flex-between">
+                                    <div class="uk-text-secondary">Subtotal</div>
+                                    <div class="uk-text-secondary uk-text-bold">Rs. 1000.</div>
                                 </div>
-                                <hr class="uk-divider-icon">
-                                <div class="button-group">
-                                    <a href="#" class="uk-button uk-button-large uk-button-primary">Proceed to Checkout</a>
-                                    <a href="#" class="uk-button uk-button-large uk-button-secondary">Continue Shopping</a>
+                                <div class="uk-flex uk-flex-middle uk-flex-between">
+                                    <div class="uk-text-secondary">Shipping</div>
+                                    <div class="uk-text-secondary uk-text-bold">Calculated at next step</div>
+                                </div>
+                                <hr>
+                                <div class="uk-flex uk-flex-middle uk-flex-between">
+                                    <div class="uk-text-secondary">Total</div>
+                                    <div class="uk-text-secondary uk-text-bold">Rs. 1000.</div>
                                 </div>
                             </aside>
                         </div>

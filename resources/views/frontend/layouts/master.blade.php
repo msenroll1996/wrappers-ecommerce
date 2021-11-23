@@ -8,6 +8,7 @@
     <title>WrappersWrap</title>
     <!-- UIKit CSS -->
     <link rel="stylesheet" href="{{URL::asset('assets/plugin/uikit/css/uikit.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Google Fonts CSS -->
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{URL::asset('assets/css/style.css')}}">
