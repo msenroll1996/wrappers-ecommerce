@@ -378,4 +378,40 @@ iframe {
 .gateway label + label {
   margin-top: 10px;
 }
+
+.uk-table.site__add-to-cart__table.wishlist-table tr > :first-child {
+  width: 30px !important;
+}
+
+.order-history .uk-table.site__add-to-cart__table tr > :first-child {
+  width: 25% !important;
+}
+
+.mobile-acc--card {
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.mobile-acc--card:hover, .mobile-acc--card:focus {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.overfow-hidden {
+  overflow: hidden;
+}
+
+.uk-card .uk-h5.uk-text-secondary.uk-text-lead {
+  font-weight: bold;
+}
+
+.list-view .uk-card + .uk-card {
+  margin-top: 20px;
+}
+
+.mobile-acc-wrapper .uk-overlay-default {
+  background-color: rgba(0, 0, 0, 0.3);
+}
 /*# sourceMappingURL=style.css.map */

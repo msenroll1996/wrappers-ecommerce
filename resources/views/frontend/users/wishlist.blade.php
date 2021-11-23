@@ -4,7 +4,7 @@
 <main class="site__main">
             <!-- Default page -->
             <section class="site__default uk-padding uk-padding-remove-horizontal ">
-                <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
+                <div class="uk-container uk-padding uk-padding-remove-vertical">
                     <div class="">
                         <h1 class="uk-h2">My Wishlist</h1>
                     </div>
@@ -14,15 +14,15 @@
 
             <!-- Product -->
             <section class="site__product-list uk-padding uk-padding-remove-horizontal" style="padding-bottom: 70px;">
-                <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
-                    <div class="uk-child-width-1-1 uk-child-width-1-3@m uk-child-width-1-4@l uk-flex-center@l" uk-grid>
+                <div class="uk-container uk-padding uk-padding-remove-vertical">
+                    <div class="uk-child-width-1-1 uk-flex-center@l" uk-grid>
                         @forelse($wishlist_products as $wishlist_product)
                         <div>
                         <div class="uk-overflow-auto">
-                                <table class="uk-table uk-table-divider uk-table-striped uk-table-small site__add-to-cart__table">
+                                <table class="uk-table uk-table-divider uk-table-striped uk-table-small site__add-to-cart__table wishlist-table">
                                     <thead>
                                         <tr>
-                                            <th></th>
+                                            <th style="width: 30px;"></th>
                                             <th>Products</th>
                                             <th>Price</th>
                                             <th>Quantity</th>

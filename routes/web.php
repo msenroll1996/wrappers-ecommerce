@@ -37,6 +37,14 @@ Route::get('/payment',function(){
     return view('frontend.checkout.payment');
 })->name('frontend.payment');
 
+Route::get('/mobile-acc',function(){
+    return view('frontend.mobile_acc');
+})->name('frontend.mobile_acc');
+
+Route::get('/card-skin',function(){
+    return view('frontend.card_skin');
+})->name('frontend.card_skin');
+
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/login','App\Http\Controllers\Frontend\LoginController@get_login')->name('frontend.login.get_login');
     Route::post('/login','App\Http\Controllers\Frontend\LoginController@post_login')->name('frontend.login.post_login');

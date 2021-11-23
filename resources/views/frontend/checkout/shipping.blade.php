@@ -42,7 +42,7 @@
                                     <div class="uk-width-1-2@l">
                                         <div class="uk-margin">
                                             <div class="uk-w-full" uk-form-custom="target: > * > span:first-child">
-                                            <label>Country</label>
+                                                <label>Country</label>
                                                 <select name = "shipping_country">
                                                     <option value="Nepal">Nepal</option>
                                                     

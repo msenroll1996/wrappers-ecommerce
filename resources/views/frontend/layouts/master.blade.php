@@ -50,7 +50,7 @@
                                     <span class="mr-2" uk-icon="user" style="width: 20px;"></span>
                                     <span class="uk-display-inline-block uk-text-left">
                                         <a href="{{route('frontend.login.get_login')}}" class="cart-text uk-text-secondary">Login</a><br>
-                                        <a href = "{{route('frontend.register.get_register')}}" class="cart-text  uk-text-secondary">Register</a>
+                                        <a href = "{{route('frontend.register.get_register')}}" class="cart-text uk-text-secondary">Register</a>
                                     </span>
                                 </div>
                                 @endguest
@@ -59,8 +59,8 @@
                                     class="uk-button uk-button-transparent uk-padding-remove-vertical uk-border-pill uk-flex uk-flex-middle">
                                     <span class="mr-2" uk-icon="user"></span>
                                     <span class="uk-display-inline-block uk-text-left">
-                                        <a href = "{{route('frontend.account.logout')}}" class="cart-text uk-button uk-padding-remove-vertical uk-flex">Logout</a>
-                                        <a href = "{{route('frontend.account.index')}}" class="cart-text uk-button uk-padding-remove-vertical uk-flex">My Account</a>
+                                        <a href = "{{route('frontend.account.logout')}}" class="cart-text uk-text-secondary">Logout</a><br>
+                                        <a href = "{{route('frontend.account.index')}}" class="cart-text uk-text-secondary">My Account</a>
                                     </span>
                                 </div>
                                 @endauth
@@ -83,8 +83,9 @@
                             @foreach(App\Models\Category::whereNull('parent_id')->get() as $category)
                             <li class="uk-active"><a href="">{{$category->name}}</a></li>
                             @endforeach
+                            <li><a href="{{url('/card-skin')}}">Card Skins</a></li>
                             <li>
-                                <a href="#">Mobile Acc</a>
+                                <a href="{{url('/mobile-acc')}}">Mobile Acc</a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                         <li class="uk-nav-header">Innerpages Link</li>
@@ -272,6 +273,8 @@
     <script src="{{URL::asset('assets/plugin/uikit/js/uikit.js')}}"></script>
     <script src="{{URL::asset('assets/plugin/uikit/js/uikit-icons.js')}}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{{URL::asset('assets/js/app.js')}}"></script>
+    
     @yield('script')
 
 </body>

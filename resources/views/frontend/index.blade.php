@@ -103,13 +103,13 @@
                                                 <a href = "{{route('frontend.product.single_product',['slug' => $product->slug])}}"
                                                     class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">{{$product->name}}</a>
                                                 
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">Rs {{$product->selling_price}}</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">Rs {{$product->selling_price}}</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="javascript:add_to_cart({{$product->id}})" id = "{{$product->id}}" route="{{route('frontend.cart.add_to_cart')}}"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="{{route('frontend.wishlist.add_wishlist',['product_id' => $product->id])}}" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="{{route('frontend.wishlist.add_wishlist',['product_id' => $product->id])}}" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -162,7 +162,7 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -220,7 +220,7 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -278,7 +278,7 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -336,7 +336,7 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -394,7 +394,7 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -452,7 +452,7 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -520,13 +520,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -546,13 +546,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
-                                                <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                            <a href="#"
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -572,13 +572,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
-                                                <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                            <a href="#"
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -598,13 +598,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
-                                                <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                            <a href="#"
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -624,13 +624,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
-                                                <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                            <a href="#"
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -650,13 +650,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
-                                                <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                            <a href="#"
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
@@ -676,13 +676,13 @@
                                                     ipsum dolor sit amet.</a>
                                                 <span
                                                     class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-primary uk-text-lead ">$500</span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
                                             </div>
                                             <div class="uk-width-1-3">
-                                                <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom"><span
+                                            <a href="#"
+                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
                                                         uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary"><span
+                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
                                                         uk-icon="heart"></span></a>
                                             </div>
                                         </div>
