@@ -22,7 +22,7 @@
 <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="{{ route("backend.category.index")}}">
-                  List category
+                  List categories
                 </a>
               </li>
               <li class="nav-item">

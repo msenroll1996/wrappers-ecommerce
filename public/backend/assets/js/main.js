@@ -172,5 +172,18 @@ function removeItem(id) {
         }
     });
     return false;
+
+    
+    
+}
+function confirmDelete(id) {
+    var result = confirm("Are you sure to decline this order?");
+    if (result) {
+        var button = $("#decline"+id);
+        button.prop('disabled',true);
+        var route = button.attr('route');
+        window.location.href = route;
+        button.prop('disabled',false);
+    }
     
 }

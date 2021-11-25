@@ -7,7 +7,7 @@
 <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="{{ route("backend.category.index")}}">
-                  List Category
+                  List Categories
                 </a>
               </li>
 </ul>

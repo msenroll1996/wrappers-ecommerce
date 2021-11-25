@@ -96,12 +96,15 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(
        Route::get('sub_category/delete/{id}','App\Http\Controllers\Backend\SubCategoryController@destroy')->name('backend.sub_category.destroy');
 
        //Sub Category Route
-       Route::get('orders','App\Http\Controllers\Backend\OrderController@index')->name('backend.orders.index');
-       Route::get('order/add','App\Http\Controllers\Backend\OrderController@add')->name('backend.order.add');
+       Route::get('orders','App\Http\Controllers\Backend\OrderController@index')->name('backend.order.index');
+       Route::get('order/pending','App\Http\Controllers\Backend\OrderController@pending')->name('backend.order.pending');
+       Route::get('order/processing','App\Http\Controllers\Backend\OrderController@processing')->name('backend.order.processing');
+       Route::get('order/completed','App\Http\Controllers\Backend\OrderController@completed')->name('backend.order.completed');
        Route::post('order/store','App\Http\Controllers\Backend\OrderController@store')->name('backend.order.store');
        Route::get('order/edit/{id}','App\Http\Controllers\Backend\OrderController@edit')->name('backend.order.edit');
-       Route::post('order/update/{id}','App\Http\Controllers\Backend\OrderController@update')->name('backend.order.update');
-       Route::get('order/delete/{id}','App\Http\Controllers\Backend\OrderController@destroy')->name('backend.order.destroy');
+       Route::get('order/process/{id}','App\Http\Controllers\Backend\OrderController@process')->name('backend.order.process');
+       Route::get('order/complete/{id}','App\Http\Controllers\Backend\OrderController@complete')->name('backend.order.complete');
+       Route::get('order/decline/{id}','App\Http\Controllers\Backend\OrderController@decline')->name('backend.order.decline');
    
    
    
