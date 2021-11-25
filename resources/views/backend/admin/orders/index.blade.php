@@ -1,16 +1,25 @@
 @extends('backend.layouts.master')
 @section('title')
-  List {{$title}}
+  List {{$urlTitle}}
 @endsection
 @section('search')
 <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="{{ route("backend.order.add")}}">
-                  Add Order
+                <a class="nav-link active" href="{{ route("backend.order.pending")}}">
+                  Pending Orders
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route("backend.order.processing")}}">
+                  Processing Orders
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route("backend.order.completed")}}">
+                  Completed Orders
                 </a>
               </li>
 </ul>
-
 @endsection
 @section('content')
 
@@ -29,9 +38,7 @@
   </div> <!-- end .flash-message -->
               <div class="card-header">
                 <h4 class="card-title"> {{$title}}</h4>
-                <div  class="col-md-2" style = "margin-left:85%">
-                      <button class="btn btn-primary" onclick="window.location='{{ route("backend.order.add")}}'">Add new</button>
-                </div>
+                
          
   
              
@@ -92,7 +99,10 @@
                           @if($order->status == 1){{'Active'}}@else{{'In-active'}}@endif
                           </td> -->
                            <td class="text-right">
-                            <a  href="{{route('backend.order.edit',['id' => $order->id])}}"><i data-toggle="tooltip" data-placement="top" title="Edit" class="far fa-edit"></i></a>&nbsp;&nbsp;<a onclick="return confirm('Are you sure to delete this item?')" href = "{{route('backend.order.destroy',['id' => $order->id])}}"><i data-toggle="tooltip" data-placement="top" title="Delete" class="far fa-trash-alt"></i></a>
+                            <a  href="{{route('backend.order.edit',['id' => $order->id])}}"><i data-toggle="tooltip" data-placement="top" title="Edit" class="far fa-edit"></i></a>&nbsp;&nbsp;
+                            @if($order->status == 'pending')
+                            <a onclick="return confirm('Are you sure to decline this order?')" href = "{{route('backend.order.decline',['id' => $order->id])}}"><i data-toggle="tooltip" data-placement="top" title="Delete" class="far fa-trash-alt"></i></a>
+                            @endif
                           </td>
                         </tr>
                       @endforeach

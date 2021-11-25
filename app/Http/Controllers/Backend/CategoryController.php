@@ -14,13 +14,13 @@ class CategoryController extends Controller
     public function __construct()
     {
         
-        $this->title = "Category";
+        $this->title = "Categories";
         $this->route = "/admin/category";
         
         
     }
     public function index(){
-        $title = 'Category';
+        $title = 'Categories';
         $route = "/admin/category";
         $categories = Category::all();
 

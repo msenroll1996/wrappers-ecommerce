@@ -59,18 +59,18 @@
               <p>Dashboard</p>
             </a>
           </li>
-          <li class= {{$title == 'Category' ? 'active' : ''}}>
+          <li class= {{$title == 'Categories' ? 'active' : ''}}>
             <a href="{{route('backend.category.index')}}">
             <i class="fas fa-users"></i>
-              <p>Category</p>
+              <p>Categories</p>
             </a>
           </li>
-          <li class= {{$title == 'Sub Category' ? 'active' : ''}}>
+          <!-- <li class= {{$title == 'Sub Category' ? 'active' : ''}}>
             <a href="{{route('backend.sub_category.index')}}">
             <i class="fas fa-users"></i>
               <p>Sub Category</p>
             </a>
-          </li>
+          </li> -->
           <li class= {{$title == 'Products' ? 'active' : ''}}>
             <a href="{{route('backend.product.index')}}">
               <i class="now-ui-icons education_atom"></i>
@@ -78,7 +78,7 @@
             </a>
           </li>
           <li class= {{$title == 'Orders' ? 'active' : ''}}>
-            <a href="{{route('backend.orders.index')}}">
+            <a href="{{route('backend.order.index')}}">
               <i class="now-ui-icons education_atom"></i>
               <p>Orders</p>
             </a>

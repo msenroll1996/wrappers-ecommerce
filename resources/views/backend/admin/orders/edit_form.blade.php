@@ -16,10 +16,10 @@
 -->
 @extends('backend.layouts.master')
 @section('title')
-  Edit {{$title}}
+  View {{$title}}
 @endsection
 @section('search')
-<ul class="navbar-nav">
+<!-- <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link" href="{{ route("backend.product.index")}}">
                   List Product
@@ -30,161 +30,89 @@
                   Add Product
                 </a>
               </li>
-</ul>
+</ul> -->
 @endsection
 @section('content')
     <div class="content">
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h5 class="title"> Edit {{$title}}</h5>
+                <h5 class="title">Order Details</h5>
               </div>
+              <hr>
               <div class="card-body">
-                <form method = "POST" action = "{{route('backend.product.update',['id' => $product->id])}}" enctype="multipart/form-data">
-                  {{csrf_field()}}
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Name</label>
-                        <input type="text" name = "name" class="form-control" value = "{{$product->name}}" placeholder="Enter Product Name" required>
-                        
-                      </div>
-                    </div>
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Code</label>
-                        <input type="text" name = "code" class="form-control" value = "{{$product->code}}" placeholder="Enter Product Code" required>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Select Category</label>
-                      <select name="category_id" id="category" class="form-control" required>
-                        <option value = "">Select category</option>
-                        @foreach($categories as $category)
-                          <option value="{{$category->id}}" {{$product->category->name == $category->name ? 'selected' : ''}}> {{$category->name}} </option>
-                        @endforeach
-                      </select> 
-                      </div>
-                    </div>
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Select Sub Category</label>
-                      <select name="sub_category_id" id="sub_category" class="form-control" required>
-                        @foreach($sub_categories as $sub_categorie)
-                        <option value="{{$sub_categorie->id}}" {{$product->sub_category->id == $sub_categorie->id ? 'selected' : ''}}> {{$sub_categorie->name}} </option>
-                        @endforeach
-                      </select> 
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Slug</label>
-                        <input type="text" name = "slug" value = "{{$product->slug}}" class="form-control" placeholder="Enter Product slug" required>
-                        
-                      </div>
-                    </div>
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Quantity</label>
-                        <input type="number" name = "quantity" value = "{{$product->quantity}}" class="form-control" placeholder="Enter Product quantity" min = "1" required>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Price</label>
-                        <input type="text" name = "selling_price" value = "{{$product->selling_price}}" class="form-control" placeholder="Enter Product Price" required>
-                        
-                      </div>
-                    </div>
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <label>Color</label>
-                        <input type="text" name = "color" value = "{{$product->color}}" class="form-control" placeholder="Enter Product color">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12 pr-1">
-                      <div>
-                        <label for = "description">Desription</label>
-                        <textarea  class="form-control" id = "description" name = "description" placeholder="" required>{{$product->description}}</textarea>
-                      </div>
-                    </div>
-                    <div class="col-md-12 pr-1">
-                      <div>
-                        <label for = "key_points">Key Points</label>
-                        <textarea  class="form-control" id = "key_points" name = "key_points" placeholder="" required>{{$product->key_points}}</textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 pr-1">
-                      <div>
-                        <label for = "image_first">First Image</label>
-                        <input type="file" name = "image_first" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pr-1">
-                      <div>
-                        <label for = "image_second">Second Image</label>
-                        <input type="file" name = "image_second" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-md-4 pr-1">
-                      <div>
-                        <label for = "image_third">Third Image</label>
-                        <input type="file" name = "image_third" class="form-control">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                  <label>Status</label>
-                      <div class="form-group">
-                        <input type="radio" name = "status"  value = "1" id = "active" checked  required>
-
-                        <label for = "active" >Active</label>
-
-                        <input type="radio" name = "status"  value = "0" id = "in-active"  required>
-
-                        <label for = "in-active" >In-active</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                  <div class="col-md-4">
-                      <button type = "submit" class="btn btn-primary btn-block">Edit</button>
-                  </div>
-                  </div>
-                </form>
+                <p><b>Order No.:</b> {{$order->order_no}}</p>
+                <p><b>Customer Name:</b> {{$order->user->first_name.' '.$order->user->last_name}}</p>
+                <p><b>Customer Phone:</b> {{$order->user->phone}}</p>
+                <p><b>Total Ordered Quantity:</b> {{$order->total_quantity}}</p>
+                <p><b>Total Amount:</b> {{$order->total_price}}</p>
+                <p><b>Payment Method:</b> {{$order->payment_method}}</p>
+                <p><b>Paid Status:</b> {{$order->is_paid == true ? 'Paid' : 'Unpaid'}}</p>
+                <p><b>Ship To:</b> {{$order->shipping_first_name.' '.$order->shipping_last_name}}</p>
+                <p><b>Shipping Address: </b>{{$order->shipping_address}}</p>
+                <p><b>Shipping Street: </b>{{$order->shipping_street}}</p>
+                <p><b>Shipping Phone: </b>{{$order->shipping_phone}}</p>
               </div>
             </div>
-          </div>
-          @if($product->image_first != null)
-          <div class="col-md-4">
+                      <div class="row">
+                        @if($order->status == 'pending')
+                        <div class="col-md-4">
+                          <button class="btn btn-secondary btn-block" onclick="window.location.href = '{{route('backend.order.process',['id' => $order->id])}}'">Process this order</button>
+                        </div>
+                        <div class="col-md-4">
+                          <button type = "button" class="btn btn-primary btn-block" onclick="javascript:confirmDelete({{$order->id}})" route = "{{route('backend.order.decline',['id' => $order->id])}}" id = "decline{{$order->id}}">Decline this order</button>
+                        </div>
+                        @endif
+                        @if($order->status == 'processing')
+                        <div class="col-md-4">
+                          <button class="btn btn-secondary btn-block" onclick="window.location.href = '{{route('backend.order.complete',['id' => $order->id])}}'">Complete this order</button>
+                        </div>
+                        @endif
+
+                      </div>
+                    </div>
+          
+          
+          <div class="col-md-6">
             <div class="card card-user">
               <div class="image">
+              <h4 style = "text-align:center">Order Item Details</h4>
               </div>
               <div class="card-body">
                 <div class="author">
-                  <a href="#">
-                    <img class="avatar border-gray" src="{{ url( 'storage/'.$product->image_first ) }}" alt="No image">
-                    @if($product->image_second != null)<br/><img class="avatar border-gray" src="{{ url( 'storage/'.$product->image_second ) }}" alt="No image">@endif
-                    @if($product->image_third != null)<br/><img class="avatar border-gray" src="{{ url( 'storage/'.$product->image_third ) }}" alt="No image">@endif
-                    <h5 class="title">Rs {{$product->selling_price}}</h5>
-                  </a>
-                  
-                  <!-- <p class="description">
-                    {{$product->description}}
-                  </p> -->
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Product
+                      </th>
+                      <th>
+                        Quantity
+                      </th>
+                      <th class="text-right">
+                        Price
+                      </th>
+                     
+                    </thead>
+                    <tbody>
+                      @foreach($order->products as $product)
+                      <tr>
+                        <td>
+                          {{$product->name}}
+                        </td>
+                        <td>
+                        {{$product->pivot->quantity}}
+                        </td>
+                        
+                        <td class="text-right">
+                        {{$product->pivot->price}}
+                        </td>
+                      </tr>
+                      @endforeach
+                     
+                    </tbody>
+                  </table>
                 </div>
                 
               </div>
@@ -202,7 +130,6 @@
               </div> -->
             </div>
           </div>
-          @endif
           
         </div>
     </div>
