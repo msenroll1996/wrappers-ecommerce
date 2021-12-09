@@ -29,6 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('image_second')->nullable();
             $table->string('image_third')->nullable();
             $table->boolean('status')->default(1);
+            $table->string('display_in')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->timestamps();

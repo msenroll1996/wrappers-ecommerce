@@ -10,9 +10,9 @@
                     </div>
                     <div class="breadcrumb">
                         <ul class="breadcrumb-list">
-                            <li><a href="#">Cart</a></li>
+                            <li><a href="{{route('frontend.cart.index')}}">Cart</a></li>
                             <li><span>Shipping</span></li>
-                            <li><span>Payment</span></li>
+                            <!-- <li><span>Payment</span></li> -->
                         </ul>
                     </div>
                     <div class='uk-grid-large' uk-grid>
@@ -37,34 +37,20 @@
                                     <div class="uk-width-1-1">
                                         <div class="uk-margin">
                                         <label>Address</label>
-                                            <input type="text" name = "shipping_address" class="uk-input" placeholder="Address" required>
+                                            <input type="text" name = "shipping_address" class="uk-input" placeholder="Address" value = "{{Session::get('shipping_info')['shipping_address']}}" required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1">
                                         <div class="uk-margin">
                                         <label>Street</label>
-                                            <input type="text" name = "shipping_street" class="uk-input" placeholder="Appartment, suite, etc." required>
+                                            <input type="text" name = "shipping_street" value = "{{Session::get('shipping_info')['shipping_street']}}" class="uk-input" placeholder="Appartment, suite, etc." required>
                                         </div>
                                     </div>
-                                    <div class="uk-width-1-2@l">
-                                        <div class="uk-margin">
-                                            <div class="uk-w-full" uk-form-custom="target: > * > span:first-child">
-                                                <label>Country</label>
-                                                <select name = "shipping_country">
-                                                    <option value="Nepal">Nepal</option>
-                                                    
-                                                </select>
-                                                <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                                                    <span></span>
-                                                    <span uk-icon="icon: chevron-down"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                     <div class="uk-width-1-2@l">
                                         <div class="uk-margin">
                                         <label>Postal Code</label>
-                                            <input type="text" name = "shipping_postal_code" class="uk-input" placeholder="Postal Code">
+                                            <input type="text" name = "shipping_postal_code" value = "{{Session::get('shipping_info')['shipping_postal_code']}}"  class="uk-input" placeholder="Postal Code" required>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1">
@@ -88,18 +74,23 @@
                             </form>
 
                         </div>
+                        
                         <div class="uk-width-1-1 uk-width-1-3@l">
                             <aside class="uk-width-2-3@l">
-                                <div class="uk-flex uk-flex-middle uk-flex-between">
+                            @foreach($cart->items as $item)
+                            <div class="uk-flex uk-flex-middle uk-flex-between">
                                     <div class="uk-flex uk-flex-middle">
                                         <figure class="uk-position-relative" style="margin-bottom: 0;">
-                                            <img src="https://cdn.pixabay.com/photo/2017/06/29/10/28/games-2453777_960_720.jpg" class="uk-border-rounded aside-produt-img" alt="">
-                                            <span class="uk-badge uk-position-absolute uk-position-top-right">1</span>
+                                            <img src="{{ url( 'storage/'.$item['item']->image_first ) }}" class="uk-border-rounded aside-produt-img" alt="">
+                                            <span class="uk-badge uk-position-absolute uk-position-top-right">{{$item['qty']}}</span>
                                         </figure>
-                                        <div style="margin-left: 10px;">Product Name</div>
+                                        <div style="margin-left: 10px;">{{$item['item']->name}}</div>
                                     </div>
-                                    <div class="uk-text-secondary uk-text-bold">Rs. 1000.</div>
+                                    <div class="uk-text-secondary uk-text-bold">Rs. {{$item['price']}}</div>
                                 </div>
+                            @endforeach
+                                
+                                
                                 <hr>
                                 <form action="" class="uk-margin uk-grid-small uk-flex-stretch" uk-grid>
                                     <div class="uk-width-expand">
@@ -112,7 +103,7 @@
                                 <hr>
                                 <div class="uk-flex uk-flex-middle uk-flex-between">
                                     <div class="uk-text-secondary">Subtotal</div>
-                                    <div class="uk-text-secondary uk-text-bold">Rs. 1000.</div>
+                                    <div class="uk-text-secondary uk-text-bold">Rs. {{$cart->totalPrice}}</div>
                                 </div>
                                 <div class="uk-flex uk-flex-middle uk-flex-between">
                                     <div class="uk-text-secondary">Shipping</div>
@@ -121,7 +112,7 @@
                                 <hr>
                                 <div class="uk-flex uk-flex-middle uk-flex-between">
                                     <div class="uk-text-secondary">Total</div>
-                                    <div class="uk-text-secondary uk-text-bold">Rs. 1000.</div>
+                                    <div class="uk-text-secondary uk-text-bold">Rs. {{$cart->totalPrice}}</div>
                                 </div>
                             </aside>
                         </div>

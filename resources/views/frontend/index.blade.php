@@ -9,7 +9,7 @@
                 <div class="uk-child-width-1-3 uk-child-width-1-6@l" uk-grid>
                     @foreach($categories as $category)
                     <div class="site__category-nav-list__link uk-position-relative">
-                        <a href="#">
+                        <a href="@if($category->child_categories->count() > 0){{route('frontend.product.pages',['page' => $category->slug])}}@else{{route('frontend.product.collection',['page' => $category->slug])}}@endif">
                             <img src="{{url( 'storage/'.$category->cover_image )}}"
                                 class="image-cover uk-border-circle" alt="{{$category->name}}">
                         </a>
@@ -23,7 +23,7 @@
         <!-- Main -->
         <main class="site__main">
             <!-- Feature -->
-            <section class="site__feature-list uk-padding-large pb-0 uk-margin-large-top uk-padding-remove-horizontal">
+            <!-- <section class="site__feature-list uk-padding-large pb-0 uk-margin-large-top uk-padding-remove-horizontal">
                 <div uk-slideshow="animation: push">
 
                     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
@@ -46,19 +46,19 @@
                     </div>
                 
                 </div>
-            </section>
+            </section> -->
             <!-- Feature end -->
 
             <!-- Best Sellers -->
             <section class="site__best-seller uk-padding uk-padding-remove-horizontal">
                 <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
-                    <h2 class="uk-h2 uk-text-center ">Best Seller</h2>
+                    <h2 class="uk-h2 uk-text-center ">Best Selling Skins</h2>
                     <hr class="uk-divider-icon uk-margin-medium-bottom">
                     <div class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
 
                         <ul
                             class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-5@l uk-grid-small uk-grid">
-                            @foreach($products as $product)
+                            @foreach($best_selling_products as $product)
                             
                             <li>
                                 <div class="uk-card uk-card-default">
@@ -476,51 +476,34 @@
                 </div>
             </section>
             <!-- Best Sellers end -->
-
             <!-- banner -->
-            <section class="site__info-banner ">
-                <div class="uk-container-expand">
-                    <div class="uk-background uk-background-center-center uk-background-cover uk-height-viewport uk-panel uk-flex uk-flex-middle uk-flex-left uk-padding uk-light" uk-parallax="bgy: -200"
-                        style="background-image: url(https://cdn.pixabay.com/photo/2017/06/29/10/28/games-2453777_960_720.jpg);">
-                        <div class="uk-width-1-2">
-                            <dl class="uk-description-list">
-                                <dt>
-                                    <div class="uk-h2 uk-text-primary uk-text-bold">Lorem ipsum dolor sit amet consectetur adipisicing.</div>
-                                </dt>
-                                <dd>
-                                    <p class="uk-text-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore?</p>
-                                    <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                </dd>
-                            </dl>                            
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
+
             <!-- banner end -->
 
             <!-- Best Sellers -->
             <section class="site__best-seller uk-padding uk-padding-remove-horizontal">
                 <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
-                    <h2 class="uk-h2 uk-text-center ">Popular Propduct</h2>
+                    <h2 class="uk-h2 uk-text-center ">Trending Skins</h2>
                     <hr class="uk-divider-icon uk-margin-medium-bottom">
                     <div class="uk-position-relative uk-visible-toggle" tabindex="-1" uk-slider>
 
                         <ul
                             class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-child-width-1-5@l uk-grid-small uk-grid">
+                            @foreach($trending_products as $product)
                             <li>
                                 <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
+                                    <a href="{{route('frontend.product.single_product',['slug' => $product->slug])}}"><img
+                                            src="{{url('storage/'.$product->image_first)}}"
                                             alt=""></a>
                                     <div class=" uk-card-body">
                                         <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
                                             <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
+                                                <a href = "{{route('frontend.product.single_product',['slug' => $product->slug])}}"
+                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">{{$product->name}}</a>
                                                 <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
+                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right"></span>
+                                                <span class="uk-h5 uk-text-secondary uk-text-lead  ">Rs {{$product->selling_price}}</span>
                                             </div>
                                             <div class="uk-width-1-3">
                                                 <a href="#"
@@ -533,162 +516,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                            alt=""></a>
-                                    <div class=" uk-card-body">
-                                        <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
-                                            <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
-                                                <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
-                                            </div>
-                                            <div class="uk-width-1-3">
-                                            <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
-                                                        uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
-                                                        uk-icon="heart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                            alt=""></a>
-                                    <div class=" uk-card-body">
-                                        <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
-                                            <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
-                                                <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
-                                            </div>
-                                            <div class="uk-width-1-3">
-                                            <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
-                                                        uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
-                                                        uk-icon="heart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                            alt=""></a>
-                                    <div class=" uk-card-body">
-                                        <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
-                                            <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
-                                                <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
-                                            </div>
-                                            <div class="uk-width-1-3">
-                                            <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
-                                                        uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
-                                                        uk-icon="heart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                            alt=""></a>
-                                    <div class=" uk-card-body">
-                                        <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
-                                            <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
-                                                <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
-                                            </div>
-                                            <div class="uk-width-1-3">
-                                            <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
-                                                        uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
-                                                        uk-icon="heart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                            alt=""></a>
-                                    <div class=" uk-card-body">
-                                        <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
-                                            <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
-                                                <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
-                                            </div>
-                                            <div class="uk-width-1-3">
-                                            <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
-                                                        uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
-                                                        uk-icon="heart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="uk-card uk-card-default">
-                                    <a href="{{route('frontend.product.single_product',['slug' => 265])}}"><img
-                                            src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg"
-                                            alt=""></a>
-                                    <div class=" uk-card-body">
-                                        <div class="uk-grid-small uk-grid-divider uk-flex-middle" uk-grid>
-                                            <div class="uk-width-expand">
-                                                <a
-                                                    class="uk-text-secondary uk-text-light uk-h5 uk-display-block uk-margin-remove-vertical mb-card-title">Lorem
-                                                    ipsum dolor sit amet.</a>
-                                                <span
-                                                    class="uk-h5 uk-text-secondary uk-text-light line-through uk-margin-small-right">$500</span>
-                                                <span class="uk-h5 uk-text-secondary uk-text-lead ">$500</span>
-                                            </div>
-                                            <div class="uk-width-1-3">
-                                            <a href="#"
-                                                    class="uk-button uk-button-icon uk-button-primary uk-margin-small-bottom" uk-tooltip="Add to cart"><span
-                                                        uk-icon="cart"></span></a>
-                                                <a href="#" class="uk-button uk-button-icon uk-button-secondary" uk-tooltip="Add to wishlist"><span
-                                                        uk-icon="heart"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            @endforeach
+                          
                         </ul>
 
                         <a class="uk-position-center-left uk-text-white uk-position-small uk-hidden-hover" href="#"
@@ -702,7 +531,7 @@
             <!-- Best Sellers end -->
 
             <!-- Best Sellers -->
-            <section class="site__best-seller uk-padding uk-padding-remove-horizontal bg-accent-cloud">
+            <!-- <section class="site__best-seller uk-padding uk-padding-remove-horizontal bg-accent-cloud">
                 <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
                     <div class="uk-grid-small uk-light" uk-grid>
                         
@@ -749,28 +578,13 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
             <!-- Best Sellers end -->
 
             <!-- banner -->
-            <section class="site__info-banner ">
-                <div class="uk-container-expand">
-                    <div class="uk-background uk-background-center-center uk-background-cover uk-height-viewport uk-panel uk-flex uk-flex-middle uk-flex-left uk-padding uk-light" uk-parallax="bgy: -200"
-                        style="background-image: url(https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg);">
-                        <div class="uk-width-1-2">
-                            <dl class="uk-description-list">
-                                <dt>
-                                    <div class="uk-h2 uk-text-primary uk-text-bold">Lorem ipsum dolor sit amet consectetur adipisicing.</div>
-                                </dt>
-                                <dd>
-                                    <p class="uk-text-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, dolore?</p>
-                                    <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                </dd>
-                            </dl>                            
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
+
+            
             <!-- banner end -->
 
             <!-- Video Slider -->
@@ -781,13 +595,13 @@
 
                         <ul class="uk-slideshow-items">
                             <li>
-                                <iframe  src="https://www.youtube.com/embed/TDNGEFd-aEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe  src="https://www.youtube.com/embed/bunYgW6M79M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </li>
                             <li>
-                                <iframe  src="https://www.youtube.com/embed/377AQ0y6LPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe  src="https://www.youtube.com/embed/M5IxZMqMt3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </li>
                             <li>
-                                <iframe  src="https://www.youtube.com/embed/8wA6uPEu9hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe  src="https://www.youtube.com/embed/IsYGy3exMBE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </li>
                         </ul>
 
@@ -804,82 +618,27 @@
             <!-- zig-jag blog post -->
             <section class="site__blog-list site__blog-list--zig-jag">
                 <div class="uk-container-expand">
-                    <div class="uk-card">
-                        <div class="uk-grid-collapse uk-child-width-1-1 uk-child-width-1-2@m" uk-grid>
-                            <div>
-                                <article class="uk-padding uk-flex uk-flex-column uk-flex-center uk-flex-middle"
-                                    style="height:100%;">
-                                    <h2><a href="#">Laptop Accessories</a></h2>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas sunt vero
-                                        mollitia sapiente eaque deleniti voluptates aliquid quaerat? At, corrupti!</p>
-                                    <a href="#" class="uk-button uk-button-default">Shop Now</a>
-                                </article>
+                    @foreach($categories as $category)
+                        <div class="uk-card">
+                            <div class="uk-grid-collapse uk-child-width-1-1 uk-child-width-1-2@m" uk-grid>
+                                <div>
+                                    <article class="uk-padding uk-flex uk-flex-column uk-flex-center uk-flex-middle"
+                                        style="height:100%;">
+                                        <h2><a href="@if($category->child_categories->count() > 0){{route('frontend.product.pages',['page' => $category->slug])}}@else{{route('frontend.product.collection',['page' => $category->slug])}}@endif">{{$category->name}}</a></h2>
+                                        <p>{{$category->description}}</p>
+                                        <a href="@if($category->child_categories->count() > 0){{route('frontend.product.pages',['page' => $category->slug])}}@else{{route('frontend.product.collection',['page' => $category->slug])}}@endif" class="uk-button uk-button-default">Shop Now</a>
+                                    </article>
+                                </div>
+                                <figure>
+                                    <a href="#">
+                                        <img src="{{url('storage/'.$category->cover_image)}}"
+                                            alt="">
+                                    </a>
+                                </figure>
                             </div>
-                            <figure>
-                                <a href="#">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg"
-                                        alt="">
-                                </a>
-                            </figure>
                         </div>
-                    </div>
-                    <div class="uk-card">
-                        <div class="uk-grid-collapse uk-child-width-1-1 uk-child-width-1-2@m" uk-grid>
-                            <div>
-                                <article class="uk-padding uk-flex uk-flex-column uk-flex-center uk-flex-middle"
-                                    style="height:100%;">
-                                    <h2><a href="#">Laptop Accessories</a></h2>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas sunt vero
-                                        mollitia sapiente eaque deleniti voluptates aliquid quaerat? At, corrupti!</p>
-                                    <a href="#" class="uk-button uk-button-default">Shop Now</a>
-                                </article>
-                            </div>
-                            <figure>
-                                <a href="#">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg"
-                                        alt="">
-                                </a>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="uk-card">
-                        <div class="uk-grid-collapse uk-child-width-1-1 uk-child-width-1-2@m" uk-grid>
-                            <div>
-                                <article class="uk-padding uk-flex uk-flex-column uk-flex-center uk-flex-middle"
-                                    style="height:100%;">
-                                    <h2><a href="#">Laptop Accessories</a></h2>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas sunt vero
-                                        mollitia sapiente eaque deleniti voluptates aliquid quaerat? At, corrupti!</p>
-                                    <a href="#" class="uk-button uk-button-default">Shop Now</a>
-                                </article>
-                            </div>
-                            <figure>
-                                <a href="#">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg"
-                                        alt="">
-                                </a>
-                            </figure>
-                        </div>
-                    </div>
-                    <div class="uk-card">
-                        <div class="uk-grid-collapse uk-child-width-1-1 uk-child-width-1-2@m" uk-grid>
-                            <div>
-                                <article class="uk-padding uk-flex uk-flex-column uk-flex-center uk-flex-middle"
-                                    style="height:100%;">
-                                    <h2><a href="#">Laptop Accessories</a></h2>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas sunt vero
-                                        mollitia sapiente eaque deleniti voluptates aliquid quaerat? At, corrupti!</p>
-                                    <a href="#" class="uk-button uk-button-default">Shop Now</a>
-                                </article>
-                            </div>
-                            <figure>
-                                <a href="#">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg"
-                                        alt="">
-                                </a>
-                            </figure>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
             </section>
             <!-- zig-jag blog post end -->
@@ -894,60 +653,18 @@
                     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
 
                         <ul class="uk-slider-items uk-grid uk-grid-small">
+                            @foreach($new_arrivals as $new_arrival)
                             <li class="uk-width-3-4">
                                 <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg" alt="">
+                                    <img src="{{url('storage/'.$new_arrival->image_first)}}" alt="">
                                     <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Earbud</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
+                                        <h1>{{$new_arrival->name}}</h1>
+                                        <a href="{{route('frontend.product.single_product',['slug' => $new_arrival->slug])}}" class="uk-button uk-button-primary">Shop Now</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Laptop</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Earbud</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Laptop</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Earbud</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Laptop</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
+                            @endforeach
+                            
                         </ul>
                     
                         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
@@ -966,21 +683,12 @@
                     <hr class="uk-divider-icon uk-margin-medium-bottom"> -->
 
                     <div class="uk-child-width-1-3 uk-child-width-1-5@m uk-flex-middle" uk-grid>
+                        @foreach($merchandises as $merchandise)
                         <figure>
-                            <img src="./assets/image/client-1.png" alt="">
+                            <img src="{{url('storage/'.$merchandise->image)}}" alt="">
                         </figure>
-                        <figure>
-                            <img src="./assets/image/client-2.png" alt="">
-                        </figure>
-                        <figure>
-                            <img src="./assets/image/client-3.png" alt="">
-                        </figure>
-                        <figure>
-                            <img src="./assets/image/client-4.png" alt="">
-                        </figure>
-                        <figure>
-                            <img src="./assets/image/client-1.png" alt="">
-                        </figure>
+                        @endforeach
+                       
                     </div>
                 </div>
             </section>
@@ -989,7 +697,7 @@
             <!-- Instagram -->
             <section class="site__gallery uk-padding uk-padding-remove-horizontal bg-accent-cloud">
                 <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
-                    <h2 class="uk-h2 uk-text-center ">#Shopping form <span class="uk-text-bold" style="color: #405de6;">Instagram</span></h2>
+                    <h2 class="uk-h2 uk-text-center ">#WrappersWrap on <span class="uk-text-bold" style="color: #405de6;"><a target = "_blank" href = "https://www.instagram.com/wrappers_wrap/">Instagram</a></span></h2>
                     <h4 class="uk-h5 uk-text-center uk-text-light">Shop from Instagram</h4>
                     <hr class="uk-divider-icon uk-margin-medium-bottom">
 

@@ -18,7 +18,7 @@ class WishlistController extends Controller
     public function add_wishlist(Request $request){
         $product_id = $request->product_id;
         $user_id = auth()->user()->id;
-        $wishlist = Wishlist::where('product_id',$product_id)->get();
+        $wishlist = Wishlist::where('user_id',$user_id)->where('product_id',$product_id)->get();
         if($wishlist->isEmpty()){
             Wishlist::create(['user_id' => $user_id,'product_id' => $product_id]);
         }

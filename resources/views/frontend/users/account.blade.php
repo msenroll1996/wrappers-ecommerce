@@ -6,49 +6,70 @@
                 <div class="uk-container-expand uk-padding uk-padding-remove-vertical">
                         <div class="uk-width-1-1 uk-width-2-3" id="first_view">
                                 <h1 class="uk-h2">My Account</h1>
-                                <h2 class="uk-h2">Order History</h2>
                                 <hr>
-                                <div class="order-history" style="margin-bottom: 30px">
+                                <h3 class="uk-h2">Order History</h3>
+                                @if($orders->isEmpty())
                                         <p>You haven't placed any orders yet.</p>
+
+                                @else
+                                
+                                <div class="order-history" style="margin-bottom: 30px">
                                         <div class="uk-overflow-auto">
                                         <table class="uk-table uk-table-small uk-table-justify uk-table-striped site__add-to-cart__table">
                                             <thead>
                                                 <tr>
                                                     <th>Products</th>
+                                                    <th>Quantity</th>
                                                     <th>Price</th>
                                                     <th>Total</th>
+                                                    <th>Order Placed Date</th>
+                                                    <th>Status</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                    @foreach($orders as $order)
+                                                        @foreach($order->products as $product )
+                                                        <tr>
                                                     <td>
                                                         <div class="uk-grid-small" uk-grid>
                                                             <div class="">
-                                                                <a href="#"><img src="https://cdn.pixabay.com/photo/2014/08/05/10/27/iphone-410311_960_720.jpg" class="h-full" alt="product name"></a>
+                                                                <a href="{{route('frontend.product.single_product',['slug' => $product->slug])}}"><img src="{{ url( 'storage/'.$product->first_image ) }}" class="h-full" alt="{{$product->name}}"></a>
                                                             </div>
                                                             <div class="">
-                                                                <div class="product-title"><a href="#">Product Ttitle</a></div>
-                                                                <div>Rs. 300.00</div>
+                                                                <div class="product-title"><a href="{{route('frontend.product.single_product',['slug' => $product->slug])}}">{{$product->name}}</a></div>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        Rs. 250.00
+                                                        {{$product->pivot->quantity}}
                                                     </td>
                                                     <td>
-                                                        <strong>Rs. 250.00</strong>
+                                                        Rs. {{$product->selling_price}}
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="close-btn">
-                                                            <span uk-icon="close"></span>
-                                                        </button>
+                                                        <strong>Rs. {{$product->pivot->price}}</strong>
                                                     </td>
+                                                    
+
+                                                    <td>
+                                                        <span> {{$order->created_at}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span> {{$order->status}}</span>
+                                                    </td>
+                                                   
                                                 </tr>
+                                                        @endforeach
+                                                    @endforeach
+
+                                                    
+                                                
                                             </tbody>
                                         </table>
                                     </div> 
                                 </div>
+                                @endif
                                 <div class="account-detail">
                                         <h2 class="uk-h2">Account Details</h2>
                                         <p>Welcome {{$user->first_name}}</p>

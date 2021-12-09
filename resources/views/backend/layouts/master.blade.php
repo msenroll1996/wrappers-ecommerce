@@ -83,6 +83,18 @@
               <p>Orders</p>
             </a>
           </li>
+          <li class= {{$title == 'Merchandise' ? 'active' : ''}}>
+            <a href="{{route('backend.merchandise.index')}}">
+            <i class="fas fa-users"></i>
+              <p>Merchandise</p>
+            </a>
+          </li>
+          <li class = {{$title == 'Change Password' ? 'active' : ''}}>
+            <a href="{{route('change_password')}}">
+              <i class="now-ui-icons text_caps-small"></i>
+              <p>Change Password</p>
+            </a>
+          </li>
           
         
         </ul>

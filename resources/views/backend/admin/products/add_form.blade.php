@@ -28,7 +28,7 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                       <label>Name</label>
-                        <input type="text" name = "name" class="form-control" placeholder="Enter Product Name" required>
+                        <input type="text" name = "name" class="form-control" id = "name" placeholder="Enter Product Name" required>
                         
                       </div>
                     </div>
@@ -46,7 +46,13 @@
                       <select name="category_id" id="category" class="form-control" required>
                         <option value = "">Select category</option>
                         @foreach($categories as $category)
-                          <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value = "{{$category->id}}">{{$category->name}}</option>
+                          @foreach(App\Models\Category::where('parent_id',$category->id)->get() as $child_category)
+                          <option value="{{$child_category->id}}">{{$category->name.' > '.$child_category->name}}</option>
+                          @foreach(App\Models\Category::where('parent_id',$child_category->id)->get() as $child)
+                          <option value="{{$child->id}}">{{$category->name.' > '.$child_category->name.' > '.$child->name}}</option>
+                          @endforeach
+                          @endforeach
                         @endforeach
                       </select> 
                       </div>
@@ -54,7 +60,7 @@
                     <div class="col-md-6 pr-1">
                     <div class="form-group">
                       <label>Slug</label>
-                        <input type="text" name = "slug" class="form-control" placeholder="Enter Product slug" required>
+                        <input type="text" name = "slug" id = "slug" class="form-control" placeholder="Enter slug" required>
                         
                       </div>
                     </div>
@@ -111,6 +117,18 @@
                     </div>
                   </div>
                   <div class="row">
+                    <div class="col-md-12 pr-1">
+                      <div class="form-group">
+                      <label>Display In</label>
+                      <select name="display_in" class="form-control">
+                        <option value="">Choose</option>
+                          <option value="best_selling">Best Selling</option>
+                          <option value="trending">Trending</option>
+                      </select> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-6 pr-1">
                   <label>Status</label>
                       <div class="form-group">
@@ -137,7 +155,17 @@
         </div>
       </div>
       @section('script')
-
-      <script src="{{ URL::asset('backend/assets/js/main.js')}}"></script>
+        <script>
+            $('#name').change(function (e) {
+              $.get("{{route('backend.product.check_slug')}}",
+                  { 'name': $(this).val() },
+                  function (data) {
+                      $('#slug').val(data.slug);
+                  }
+              );
+              
+            });
+          </script>
+        <script src="{{ URL::asset('backend/assets/js/main.js')}}"></script>
       @endsection
 @endsection

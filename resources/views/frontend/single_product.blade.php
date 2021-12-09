@@ -43,18 +43,19 @@
                         </div>
                         <div class="uk-width-1-1 uk-width-1-2@m">
                             <h2 class="uk-h2 uk-text-primary">{{$single_product->first()->name}}</h2>
-                            <ul class="uk-iconnav">
+                            <!-- <ul class="uk-iconnav">
                                 <li><a href="#" class="uk-text-primary" uk-icon="star"></a></li>
                                 <li><a href="#" class="uk-text-primary" uk-icon="star"></a></li>
                                 <li><a href="#" class="uk-text-primary" uk-icon="star"></a></li>
                                 <li><a href="#" class="uk-text-primary" uk-icon="star"></a></li>
                                 <li><a href="#" class="uk-text-primary" uk-icon="star"></a></li>
-                            </ul>
+                            </ul> -->
                             <div class="price-wrap uk-margin-top">
-                                <span class="price uk-text-lead uk-text-primary uk-text-bold">Rs {{$single_product->first()->selling_price}}</span> <span class="uk-h5">+ Free Shipping</span>
+                                <span class="price uk-text-lead uk-text-primary uk-text-bold">Rs {{$single_product->first()->selling_price}}</span> 
+                                <!-- <span class="uk-h5">+ Free Shipping</span> -->
                             </div>
                             <div class="price-wrap uk-margin-top">
-                                @if($single_product->first()->status == true)
+                                @if($single_product->first()->quantity > 0)
                                 <span class="bg-primary text-white">In Stock</span>
                                 @else
                                 <span class="bg-danger text-white">Out Of Stock</span>
@@ -65,7 +66,7 @@
                                     <input id = "qtyValue{{$single_product->first()->id}}" class="uk-input h-full" type="number" value="1" min = "1">
                                 </div>
                                 <div class="uk-width-expand">
-                                    <button onclick = "javascript:add_to_cart({{$single_product->first()->id}})" id = "{{$single_product->first()->id}}" route="{{route('frontend.cart.add_to_cart')}}" class="uk-button uk-button-secondary">Add To Cart</button>
+                                    <button {{$single_product->first()->quantity == 0 ? 'disabled' : ''}} onclick = "javascript:add_to_cart({{$single_product->first()->id}})" id = "{{$single_product->first()->id}}" route="{{route('frontend.cart.add_to_cart')}}" class="uk-button uk-button-secondary">Add To Cart</button>
                                     @if($isWishlist)
                                     <button disabled class="uk-button uk-button-secondary">Added to wishlist</button>
                                     @else
@@ -74,16 +75,16 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="buy-wrap uk-margin-top">
+                            <!-- <div class="buy-wrap uk-margin-top">
                                 <button class="uk-button uk-button-primary w-full">Buy Product</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="site__default__content uk-padding uk-padding-remove-horizontal">
                         <ul uk-tab>
                             <li class="uk-active"><a href="#">Description</a></li>
                             <li><a href="#">Key Points</a></li>
-                            <li><a href="#">Reviews</a></li>
+                            <!-- <li><a href="#">Reviews</a></li> -->
                         </ul>
                         <div class="uk-switcher uk-margin">
                             <div>
@@ -100,10 +101,10 @@
                                     <li>Aut dolor iste sed maxime optio exercitationem, facilis voluptatem temporibus.</li> -->
                                 </ul>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <h2 class="uk-text-lead">Reviews</h2>
 
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -121,60 +122,18 @@
                     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
 
                         <ul class="uk-slider-items uk-grid uk-grid-small">
+                            @foreach($new_arrivals as $new_arrival)
                             <li class="uk-width-3-4">
                                 <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg" alt="">
+                                    <img src="{{url('storage/'.$new_arrival->image_first)}}" alt="">
                                     <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Earbud</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
+                                        <h1>{{$new_arrival->name}}</h1>
+                                        <a href="{{route('frontend.product.single_product',['slug' => $new_arrival->slug])}}" class="uk-button uk-button-primary">Shop Now</a>
                                     </div>
                                 </div>
                             </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Laptop</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Earbud</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Laptop</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2015/01/20/12/51/mobile-605422_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Earbud</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="uk-width-3-4">
-                                <div class="uk-panel">
-                                    <img src="https://cdn.pixabay.com/photo/2014/05/03/01/03/laptop-336704_960_720.jpg" alt="">
-                                    <div class="uk-position-center uk-text-center uk-panel">
-                                        <h1>New Laptop</h1>
-                                        <a href="#" class="uk-button uk-button-primary">Shop Now</a>
-                                    </div>
-                                </div>
-                            </li>
+                            @endforeach
+                            
                         </ul>
                     
                         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>

@@ -16,8 +16,13 @@
             <section class="site__product-list uk-padding uk-padding-remove-horizontal" style="padding-bottom: 70px;">
                 <div class="uk-container uk-padding uk-padding-remove-vertical">
                     <div class="uk-child-width-1-1 uk-flex-center@l" uk-grid>
-                        @forelse($wishlist_products as $wishlist_product)
                         <div>
+                            @if($wishlist_products->isEmpty())
+
+                        <div style="float: left;">
+                                <b >Your wishlist is empty!</b>
+                        </div>
+                        @else
                         <div class="uk-overflow-auto">
                                 <table class="uk-table uk-table-divider uk-table-striped uk-table-small site__add-to-cart__table wishlist-table">
                                     <thead>
@@ -25,15 +30,16 @@
                                             <th style="width: 30px;"></th>
                                             <th>Products</th>
                                             <th>Price</th>
-                                            <th>Quantity</th>
                                             <th>Stock Status</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($wishlist_products as $wishlist_product)
+
                                         <tr>
                                             <td>
-                                                <button type="button"  class="close-btn">
+                                                <button type="button" onclick = "window.location.href = '{{route('frontend.wishlist.remove',['product_id' => $wishlist_product->id])}}'"  class="close-btn">
                                                     <span uk-icon="close"></span>
                                                 </button>
                                             </td>
@@ -52,9 +58,9 @@
                                             <td>
                                                 Rs. {{$wishlist_product->selling_price}}
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                             <input id = "qtyValue{{$wishlist_product->id}}" class="uk-input h-full" type="number" value="1" min = "1">
-                                            </td>
+                                            </td> -->
                                             <td>
                                                 In stock
                                             <td/>
@@ -65,15 +71,14 @@
                                                 </a>
                                             </td>
                                         </tr>
+                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
+                            @endif
                         </div>
-                        @empty
-                        <div style="float: left;">
-                                <b >Your wishlist is empty!</b>
-                        </div>
-                        @endforelse
+                        
                         
                     </div>
                 </div>

@@ -18,9 +18,13 @@ $(document).on('change', '#category', function () {
     
 });
 
+//generate slug
 
 function add_to_cart(id) {
-    var button = $("#"+id);
+    var button = $("#" + id);
+    // if (button.prop('disabled')) {
+    //     alert('Not in stock');
+    // }
     button.prop('disabled',true);
     var route = button.attr('route');
     var qtyToIncreaseBy = $("#qtyValue"+id).val() ?? 1;

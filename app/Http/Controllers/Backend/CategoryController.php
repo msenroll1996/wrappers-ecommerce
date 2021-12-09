@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
 {
@@ -28,7 +29,7 @@ class CategoryController extends Controller
     }
 
     public function add(){
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         return view('backend.admin.categories.add_form',['title' => $this->title,'route' => $this->route,'categories' => $categories]);
     }
     public function store(Request $request){
@@ -47,6 +48,7 @@ class CategoryController extends Controller
             'name' => $request['name'],
             'status' => $request['status'],
             'slug' => $request['slug'],
+            'description' => $request['description'],
             'cover_image' => $image_path ?? null,
             
         ]);
@@ -60,9 +62,9 @@ class CategoryController extends Controller
             return redirect('/admin/category');
     }
     public function edit($id){
-        $category = Category::findorfail($id);
-        $categories = Category::all();
-        return view('backend.admin.categories.edit_form',['title' => $this->title,'route' => $this->route,'category' => $category,'categories' => $categories]);
+        $old_category = Category::findorfail($id);
+        $categories = Category::whereNull('parent_id')->get();
+        return view('backend.admin.categories.edit_form',['title' => $this->title,'route' => $this->route,'old_category' => $old_category,'categories' => $categories]);
     }
     public function update(Request $request,$id){
         $this->validate($request, [
@@ -85,6 +87,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->status = $request->status;
         $category->slug = $request->slug;
+        $category->description = $request->description;
     
         $category->save();
         $request->session()->flash('alert-success', 'Category was successful updated!');
@@ -99,6 +102,11 @@ class CategoryController extends Controller
         $category->delete();
         $request->session()->flash('alert-success', 'Category was successful deleted!');
         return redirect('/admin/category');
+    }
+
+    public function check_slug(Request $request){
+        $slug = SlugService::createSlug(Category::class,'slug',$request->name);
+        return response()->json(['slug' => $slug]);
     }
 
 }

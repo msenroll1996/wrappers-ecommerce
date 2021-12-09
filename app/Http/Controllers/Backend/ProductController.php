@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
     }
 
     public function add(){
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         return view('backend.admin.products.add_form',['title' => $this->title,'route' => $this->route,'categories' => $categories]);
     }
 
@@ -75,6 +76,8 @@ class ProductController extends Controller
            'image_first' => $path_first ?? null,
            'image_second' => $path_second ?? null,
            'image_third' => $path_third ?? null,
+           'display_in' => $request['display_in'] ?? null,
+
         
            
        ]);
@@ -91,7 +94,7 @@ class ProductController extends Controller
 
     public function edit($id){
         $product = Product::findorfail($id);
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         // $sub_categories = SubCategory::where('category_id',$product->category_id)->get();
         return view('backend.admin.products.edit_form',['title' => $this->title,'route' => $this->route,'product' => $product,'categories' => $categories]);
     }
@@ -145,6 +148,7 @@ class ProductController extends Controller
         $product->sub_category_id = $request->sub_category_id;
         $product->description = $request->description;
         $product->status = $request->status;
+        $product->display_in = $request->display_in;
         $product->save();
         $request->session()->flash('alert-success', 'Product was successful updated!');
         return redirect('/admin/products');
@@ -169,6 +173,11 @@ class ProductController extends Controller
         $request->session()->flash('alert-success', 'Product was successful deleted!');
         return redirect('/admin/products');
 
+    }
+
+    public function check_slug(Request $request){
+        $slug = SlugService::createSlug(Product::class,'slug',$request->name);
+        return response()->json(['slug' => $slug]);
     }
 
 }

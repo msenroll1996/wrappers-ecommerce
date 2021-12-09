@@ -10,7 +10,9 @@ class AccountController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        return view('frontend.users.account',compact('user'));
+        $orders = $user->orders;
+        
+        return view('frontend.users.account',compact('user','orders'));
     }
     public function logout()
     {

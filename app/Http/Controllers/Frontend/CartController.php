@@ -11,12 +11,14 @@ use App\Models\Cart;
 class CartController extends Controller
 {
     public function index(){
+        $best_selling_products = Product::where('display_in','best_selling')->get();
+
         if (!Session::has('cart')){
-            return view('frontend.cart');
+            return view('frontend.cart',compact('best_selling_products'));
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('frontend.cart',['products' => $cart->items,'totalPrice' => $cart->totalPrice]);
+        return view('frontend.cart',['products' => $cart->items,'totalPrice' => $cart->totalPrice,'best_selling_products' => $best_selling_products]);
     }
     public function add_to_cart(Request $request){
         
